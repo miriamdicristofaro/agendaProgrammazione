@@ -3,4 +3,23 @@ project(agendaProgrammazione)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(agendaProgrammazione main.cpp Board.cpp Board.h MainWindow.cpp MainWindow.h Activity.cpp Activity.h SubActivity.cpp SubActivity.h Date.cpp Date.h Time.cpp Time.h)
+# Instruct CMake to run moc automatically when needed.
+set(CMAKE_AUTOMOC ON)
+# Find the QtWidgets library
+find_package(Qt5Widgets REQUIRED)
+
+add_executable(agendaProgrammazione src/main.cpp
+        src/Board.cpp
+        src/Board.h
+        src/MainWindow.cpp
+        src/MainWindow.h
+        src/Activity.cpp
+        src/Activity.h
+        src/SubActivity.cpp
+        src/SubActivity.h
+        src/Date.cpp
+        src/Date.h
+        src/Time.cpp
+        src/Time.h
+        src/Subject.h
+        src/Observer.h)

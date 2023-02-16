@@ -5,6 +5,8 @@
 #ifndef AGENDAPROGRAMMAZIONE_SUBACTIVITY_H
 #define AGENDAPROGRAMMAZIONE_SUBACTIVITY_H
 
+#include "Date.h"
+#include "Time.h"
 
 class SubActivity {
 public:

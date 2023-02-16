@@ -5,6 +5,8 @@
 #ifndef AGENDAPROGRAMMAZIONE_TIME_H
 #define AGENDAPROGRAMMAZIONE_TIME_H
 
+#include <stdexcept>
+
 
 class Time {
 public:
