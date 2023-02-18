@@ -10,7 +10,13 @@
 
 class SubActivity {
 public:
-    SubActivity();
+    SubActivity(std::string name, std::string description, Date startDate, Date endDate, Time startTime, Time endTime, std::string note)throw (std::runtime_error);
+    ~SubActivity();
+    bool operator == (const SubActivity& right) const;
+    const Date& getStartDate() const;
+    const Time& getStartTime() const;
+    const Date& getEndDate() const;
+    const Time& getEndTime() const;
 private:
     std::string name;
     std::string description;
@@ -18,6 +24,7 @@ private:
     Date endDate;
     Time startTime;
     Time endTime;
+    std::string notes;
     std::string subActivityCompleted;
 
 };
