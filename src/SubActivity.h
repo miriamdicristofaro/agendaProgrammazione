@@ -7,19 +7,24 @@
 
 #include "Date.h"
 #include "Time.h"
+#include <list>
+#include <memory>
+#include <fstream>
+#include <iostream>
 
 class SubActivity {
 public:
-    SubActivity(std::string name, std::string description, Date startDate, Date endDate, Time startTime, Time endTime, std::string note)throw (std::runtime_error);
-    ~SubActivity();
+    SubActivity(Date startDate, Date endDate, Time startTime, Time endTime, std::string note) noexcept;
+    ~SubActivity() {};
     bool operator == (const SubActivity& right) const;
     const Date& getStartDate() const;
     const Time& getStartTime() const;
     const Date& getEndDate() const;
     const Time& getEndTime() const;
+    const std::string& getNotes() const;
+    void save(std::ofstream& outfile);
+    static SubActivity load(std::ifstream& infile);
 private:
-    std::string name;
-    std::string description;
     Date startDate;
     Date endDate;
     Time startTime;

@@ -10,12 +10,11 @@
 
 class Time {
 public:
-    explicit Time(short unsigned int h, short unsigned int m, short unsigned int s) throw(std::runtime_error);
-    virtual ~Time();
+    explicit Time(short unsigned int h, short unsigned int m) noexcept;
+    virtual ~Time() {};
 
     int getHours() const;
     int getMinutes() const;
-    int getSeconds() const;
     static Time fromString(std::string str);
     std::string toString() const;
 
@@ -26,7 +25,6 @@ public:
 private:
     short unsigned int hours;
     short unsigned int minutes;
-    short unsigned int seconds;
 };
 
 

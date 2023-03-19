@@ -9,6 +9,8 @@ set(CMAKE_AUTOMOC ON)
 find_package(Qt5Widgets REQUIRED)
 
 add_executable(agendaProgrammazione src/main.cpp
+        src/ActivityController.cpp
+        src/ActivityController.h
         src/Board.cpp
         src/Board.h
         src/MainWindow.cpp
@@ -22,4 +24,12 @@ add_executable(agendaProgrammazione src/main.cpp
         src/Time.cpp
         src/Time.h
         src/Subject.h
-        src/Observer.h)
+        src/Observer.h
+        src/SubActivityDialog.cpp
+        src/SubActivityDialog.h
+        src/BoardController.cpp
+        src/BoardController.h
+        src/ActivityWidget.cpp
+        src/ActivityWidget.h)
+
+target_link_libraries(agendaProgrammazione Qt5::Widgets)
