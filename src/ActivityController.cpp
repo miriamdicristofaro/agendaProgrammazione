@@ -1,3 +1,4 @@
+
 //
 // Created by 164291 on 25/02/2023.
 //
@@ -15,3 +16,5 @@ void ActivityController::remove(SubActivity s){
 void ActivityController::setActivity(std::shared_ptr<Activity> a){
     this->activity = a;
 }
+
+

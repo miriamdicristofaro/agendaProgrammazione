@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 //
 // Created by 164291 on 25/02/2023.
 //
@@ -14,7 +15,7 @@
 class ActivityController {
 
     public:
-        ActivityController(std::shared_ptr<Activity> al) : activity(al) { };
+        ActivityController(std::shared_ptr<Activity> a) : activity(a) { };
         ~ActivityController() { };
 
         void add(SubActivity s);
@@ -28,3 +29,4 @@ class ActivityController {
 
 
 #endif //AGENDAPROGRAMMAZIONE_MASTER_ACTIVITYCONTROLLER_H
+

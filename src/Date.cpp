@@ -14,7 +14,7 @@
  * @param aYear: the year
  */
 
-Date::Date(int aDay, int aMonth, int aYear) throw (std::runtime_error){
+Date::Date(int aDay, int aMonth, int aYear) noexcept {
     if(aYear < 0)
         throw std::runtime_error("Year < 0");
     if(aDay < 0)
@@ -83,96 +83,29 @@ int Date::getMaxDays(int year) {
     return maxDay;
 }
 
-std::string Date::getMonthString(short unsigned int month) const {
-    std::string monthText;
-    switch (month) {
-        case 1:
-            monthText = "January";
-            break;
-        case 2:
-            monthText = "February";
-            break;
-        case 3:
-            monthText = "March";
-            break;
-        case 4:
-            monthText = "April";
-            break;
-        case 5:
-            monthText = "May";
-            break;
-        case 6:
-            monthText = "June";
-            break;
-        case 7:
-            monthText = "July";
-            break;
-        case 8:
-            monthText = "August";
-            break;
-        case 9:
-            monthText = "September";
-            break;
-        case 10:
-            monthText = "October";
-            break;
-        case 11:
-            monthText = "November";
-            break;
-        case 12:
-            monthText = "December";
-            break;
-        default:
-            monthText = "isNotMonth";
-    }
-    return monthText;
-}
-/**
- * Set method
- */
-void Date::setDay(int day) throw (std::runtime_error){
-    int maxDay = getMaxDays(this->year);
-    if (day <= 0 || day>maxDay)
-        throw std::runtime_error("Error in day");
-    Date::day = day;
-}
 
-void Date::setMonth(int month) throw (std::runtime_error){
-    Date::month = month;
-    int maxDay = getMaxDays(this->year);
-    if (day>maxDay)
-        day = maxDay;
-}
 
-void Date::setYear(int year) throw (std::runtime_error){
-    if(this->day > getMaxDays(year))
-        throw std::runtime_error("Error in day after year modify");
-    this->year = year;
-}
 
 /**
  * Static method that allows to get the today's date
  */
 
 Date Date::today(){
-    //FIXME
     std::chrono::system_clock::time_point now = std::chrono::system_clock::now();
     std::time_t now_c = std::chrono::system_clock::to_time_t(now);
     std::tm now_tm = *std::localtime(&now_c);
     return Date(now_tm.tm_mday ,now_tm.tm_mon + 1, now_tm.tm_year + 1900);
 }
 
-
-
 Date Date::fromString(std::string str){
     std::tm t;
-    strptime(str.c_str(), "%d:%m:%Y", &t);
+    strptime(str.c_str(), "%d/%m/%Y", &t);
     return Date(t.tm_mday, t.tm_mon+1, t.tm_year+1900);
 }
 
 
 std::string Date::toString() const{
-    return std::to_string(day) + ":" + std::to_string(month) + ":" + std::to_string(year);
+    return std::to_string(day) + "/" + std::to_string(month) + "/" + std::to_string(year);
 }
 
 bool Date::operator < (const Date& right) const{
