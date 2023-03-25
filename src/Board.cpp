@@ -106,7 +106,7 @@ void Board::removeActivity(std::string aName){
     this->notify();
 }
 
-std::vector< std::shared_ptr<Activity> > User::getActivities(){
+std::vector< std::shared_ptr<Activity> > Board::getActivities(){
     return activitylist;
 }
 
