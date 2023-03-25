@@ -14,7 +14,7 @@
  * @param aYear: the year
  */
 
-Date::Date(int aDay, int aMonth, int aYear) noexcept {
+Date::Date(int aDay, int aMonth, int aYear) noexcept{
     if(aYear < 0)
         throw std::runtime_error("Year < 0");
     if(aDay < 0)
@@ -31,29 +31,7 @@ Date::Date(int aDay, int aMonth, int aYear) noexcept {
 
 Date::~Date() {
 }
-/**
- * Get method
- */
-/**
- * Method that allows to know the day
- */
-int Date::getDay() const{
-    return this->day;
-}
 
-/**
- * Method that allows to know the month
- */
-int Date::getMonth() const{
-    return this->month;
-}
-
-/**
- * Method that allows to know the year
- */
-int Date::getYear() const{
-    return this->year;
-}
 
 int Date::getMaxDays(int year) {
     short unsigned int maxDay = 31;
@@ -83,9 +61,6 @@ int Date::getMaxDays(int year) {
     return maxDay;
 }
 
-
-
-
 /**
  * Static method that allows to get the today's date
  */
@@ -102,7 +77,6 @@ Date Date::fromString(std::string str){
     strptime(str.c_str(), "%d/%m/%Y", &t);
     return Date(t.tm_mday, t.tm_mon+1, t.tm_year+1900);
 }
-
 
 std::string Date::toString() const{
     return std::to_string(day) + "/" + std::to_string(month) + "/" + std::to_string(year);
@@ -121,7 +95,6 @@ bool Date::operator < (const Date& right) const{
     }
     return true;
 }
-
 
 bool Date::operator == (const Date& right) const{
     return this->year == right.year && this->month == right.month && this->day == right.day;
