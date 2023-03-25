@@ -7,7 +7,7 @@
 #include "Date.h"
 #include "SubActivityDialog.h"
 
-SubActivityDialog::SubActivityDialog( QWidget *parent) : QDialog(parent), toReturn(Date(1, 1, 2001), Date(2, 2, 2002), Time(3, 3), Time(4, 4), " " ){
+SubActivityDialog::SubActivityDialog( QWidget *parent) : QDialog(parent), toReturn(Date(1, 1, 2001), Date(2, 2, 2002), Time(3, 3, 3), Time(4, 4, 4), " " ){
     startLabel = new QLabel("Start Date of the Subactivity");
     endLabel = new QLabel("End Date of the Subactivity");
     startTimeLabel = new QLabel("Start Time of the Subactivity");
@@ -117,7 +117,7 @@ void SubActivityDialog::help(){
     QMessageBox::about (
             this,
             QString::fromStdString("Time input"),
-            QString::fromStdString("The Time format used is \n HH:MM \n ") );
+            QString::fromStdString("The Time format used is \n HH:MM:SS \n ") );
 }
 
 

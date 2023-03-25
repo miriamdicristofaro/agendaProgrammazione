@@ -36,7 +36,7 @@ void SubActivity::save(std::ofstream& outfile){
 
 SubActivity SubActivity::load(std::ifstream& infile){
     Date startD(1, 1, 2001), endD (1 , 1, 2001);
-    Time startT(12, 12), endT(12, 12);
+    Time startT(12, 12, 12), endT(12, 12, 12);
     std::string note;
     int size;
 
