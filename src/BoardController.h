@@ -6,7 +6,7 @@
 #define AGENDAPROGRAMMAZIONE_MASTER_BOARDCONTROLLER_H
 
 #include<memory>
-#include "Activityt.h"
+#include "Activity.h"
 #include "Board.h"
 
 class BoardController {
