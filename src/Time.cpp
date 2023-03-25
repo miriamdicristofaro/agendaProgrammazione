@@ -12,13 +12,13 @@
 */
 Time::Time(short unsigned int h, short unsigned int m, short unsigned int s) noexcept{
 if(h < 0 || h > 24){
-throw std::runtime_error("error in hours number");
+    throw std::runtime_error("error in hours number");
 }
 if(m < 0 || m > 60){
-throw std::runtime_error("error in minutes number");
+    throw std::runtime_error("error in minutes number");
 }
 if(s < 0 || s > 60){
-throw std::runtime_error("error in seconds number");
+    throw std::runtime_error("error in seconds number");
 }
 this->hours = h;
 this->minutes = m;
@@ -55,15 +55,3 @@ bool Time::operator == (const Time& right) const{
     return this->hours == right.hours && this->minutes == right.minutes && this->seconds == right.seconds;
 }
 
-/**
-	The following methods are  getters
-*/
-int Time::getHours() const {
-    return hours;
-}
-int Time::getMinutes() const {
-    return minutes;
-}
-int Time::getSeconds() const {
-    return seconds;
-}

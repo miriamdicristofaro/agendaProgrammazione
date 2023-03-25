@@ -13,9 +13,6 @@ public:
     explicit Time(short unsigned int h, short unsigned int m, short unsigned int s) noexcept;
     virtual ~Time() {};
 
-    int getHours() const;
-    int getMinutes() const;
-    int getSeconds() const;
     static Time fromString(std::string str);
     std::string toString() const;
 
