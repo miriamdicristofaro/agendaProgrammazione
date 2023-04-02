@@ -64,25 +64,33 @@ void ActivityWidget::fillTree(){
     treeView->setHeaderLabels(QStringList() << "Status" << "Notes " << "Start Date" << "Start Time" << "End Date" << "End Time" );
     Date tod = Date::today();
 
-    for(auto it : activities->getSubActivities() ){
+    for(auto it : activities->getAllSubActivities() ){
         QTreeWidgetItem *treeItem = new QTreeWidgetItem();
         if(tod < it.second.getStartDate()  ){
             treeItem->setText(0,  "To do" );
             treeItem->setForeground(0, QBrush( QColor(Qt::green) ) ) ;
+            treeItem->setText(1,  QString::fromStdString (it.second.getNotes()) );
+            treeItem->setText(2,  QString::fromStdString (it.second.getStartDate().toString() ) );
+            treeItem->setText(3,  QString::fromStdString (it.second.getStartTime().toString() ) );
+            treeItem->setText(4,  QString::fromStdString (it.second.getEndDate().toString() ) );
+            treeItem->setText(5,  QString::fromStdString (it.second.getEndTime().toString() ) );
+
+            treeView->addTopLevelItem(treeItem);
         }else if (it.second.getEndDate() < tod ){
             treeItem->setText(0,  "Passed");
             treeItem->setForeground(0, QBrush( QColor(Qt::red) ) ) ;
         }else if( (it.second.getStartDate() < tod || it.second.getStartDate() == tod) && (tod < it.second.getEndDate()  || tod == it.second.getEndDate()) ){
             treeItem->setText(0, "To do now" );
             treeItem->setForeground(0, QBrush( QColor(Qt::blue) ) ) ;
-        }
-        treeItem->setText(1,  QString::fromStdString (it.second.getNotes()) );
-        treeItem->setText(2,  QString::fromStdString (it.second.getStartDate().toString() ) );
-        treeItem->setText(3,  QString::fromStdString (it.second.getStartTime().toString() ) );
-        treeItem->setText(4,  QString::fromStdString (it.second.getEndDate().toString() ) );
-        treeItem->setText(5,  QString::fromStdString (it.second.getEndTime().toString() ) );
+            treeItem->setText(1,  QString::fromStdString (it.second.getNotes()) );
+            treeItem->setText(2,  QString::fromStdString (it.second.getStartDate().toString() ) );
+            treeItem->setText(3,  QString::fromStdString (it.second.getStartTime().toString() ) );
+            treeItem->setText(4,  QString::fromStdString (it.second.getEndDate().toString() ) );
+            treeItem->setText(5,  QString::fromStdString (it.second.getEndTime().toString() ) );
 
-        treeView->addTopLevelItem(treeItem);
+            treeView->addTopLevelItem(treeItem);
+        }
+
     }
 }
 void ActivityWidget::update(){
@@ -126,11 +134,11 @@ void ActivityWidget::handleRemoveButton(){
         for(auto it : items){
             //the subactivity that will be deleted is reconstructed using the data inside the cells
             SubActivity s(
-                         Date::fromString(it->text(2).toUtf8().constData() ), //start date
-                         Date::fromString( it->text(4).toUtf8().constData() ), //end date
-                         Time::fromString( it->text(3).toUtf8().constData() ), //start time
-                         Time::fromString( it->text(5).toUtf8().constData() ), //end time
-                         it->text(1).toUtf8().constData()  //notes
+                    Date::fromString(it->text(2).toUtf8().constData() ), //start date
+                    Date::fromString( it->text(4).toUtf8().constData() ), //end date
+                    Time::fromString( it->text(3).toUtf8().constData() ), //start time
+                    Time::fromString( it->text(5).toUtf8().constData() ), //end time
+                    it->text(1).toUtf8().constData()  //notes
             );
             activityController->remove(s);
         }
@@ -147,16 +155,21 @@ void ActivityWidget::handleChangeSelectedItem(QTreeWidgetItem * selected, int co
     );
 }
 void ActivityWidget::handleImportantButton(){
-    if(treeView->selectedItems().size() > 0){
+    if(treeView->selectedItems().size() > 0) {
         QTreeWidgetItem *selected = treeView->selectedItems().at(0);
-        SubActivity s(
-                     Date::fromString( selected->text(2).toUtf8().constData() ), //start date
-                     Date::fromString( selected->text(4).toUtf8().constData() ), //end date
-                     Time::fromString( selected->text(3).toUtf8().constData() ), //start time
-                     Time::fromString( selected->text(5).toUtf8().constData() ), //end time
-                     selected->text(1).toUtf8().constData() //notes
-        );
-        // adds the Subactivity to the board important subactivities
-        board->getActivities().at(0)->addSubActivity(s);
+        const Date &startD = Date::fromString(selected->text(2).toUtf8().constData());
+        const Date &endD = Date::fromString(selected->text(4).toUtf8().constData());
+        Date tod = Date::today();
+        if ((tod < startD || tod == startD) && (tod < endD || tod == endD)) {
+            SubActivity s(
+                    startD, //start date
+                    endD, //end date
+                    Time::fromString(selected->text(3).toUtf8().constData()), //start time
+                    Time::fromString(selected->text(5).toUtf8().constData()), //end time
+                    selected->text(1).toUtf8().constData() //notes
+            );
+            // adds the Subactivity to the board important subactivities
+            board->getActivities().at(0)->addSubActivity(s);
+        }
     }
 }

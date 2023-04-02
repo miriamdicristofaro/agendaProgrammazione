@@ -17,7 +17,7 @@
 #include "ActivityController.h"
 #include "Board.h"
 
-class ActivityWidget : public QWidget, Observer{
+class ActivityWidget : public QWidget, public Observer{
 Q_OBJECT
 
 public:
