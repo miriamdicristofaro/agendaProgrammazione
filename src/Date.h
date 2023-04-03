@@ -9,7 +9,7 @@
 class Date {
 public:
     explicit Date(int aDay, int aMonth, int aYear) noexcept;
-    virtual ~Date();
+    virtual ~Date() {};
     static Date today();
     static Date fromString(std::string str);
     std::string toString() const;

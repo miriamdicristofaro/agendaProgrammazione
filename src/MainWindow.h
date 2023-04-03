@@ -7,27 +7,25 @@
 
 #include <vector>
 #include <memory>
-
 #include <QMainWindow>
 #include <QPushButton>
 #include <QLabel>
 #include <QListWidget>
 #include <QCloseEvent>
 #include <QBoxLayout>
-
 #include "Board.h"
 #include "BoardController.h"
 #include "ActivityWidget.h"
 #include "Observer.h"
 
-class MainWindow : public QMainWindow, Observer{
+class MainWindow : public QMainWindow, public Observer{
     Q_OBJECT
 public:
     MainWindow(std::shared_ptr<Board> b, std::shared_ptr<BoardController> bc);
     ~MainWindow();
 
-    virtual void closeEvent (QCloseEvent *event) override;
-    virtual void update() override;
+   void closeEvent (QCloseEvent *event) override;
+   void update() override;
 private slots:
     void handleAddButton();
     void handleRemoveButton();

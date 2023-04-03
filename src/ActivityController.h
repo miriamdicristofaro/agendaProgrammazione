@@ -15,7 +15,7 @@ class ActivityController {
 
     public:
         ActivityController(std::shared_ptr<Activity> a) : activity(a) { };
-        ~ActivityController() { };
+        ~ActivityController() = default;
 
         void add(SubActivity s);
         void remove(SubActivity s);

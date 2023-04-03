@@ -15,7 +15,7 @@
 class SubActivity {
 public:
     SubActivity(Date startDate, Date endDate, Time startTime, Time endTime, std::string note) noexcept;
-    ~SubActivity() {};
+    ~SubActivity() = default;
     bool operator == (const SubActivity& right) const;
     const Date& getStartDate() const;
     const Time& getStartTime() const;
