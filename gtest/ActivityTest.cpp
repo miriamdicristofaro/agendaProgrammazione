@@ -59,7 +59,7 @@ a->removeSubActivity(s);
 ASSERT_EQ(1, a->getAllSubActivities().size());
 
 
-//Here we test the remove if the repeated flag is different
+//Here we test the remove if the repeated flag is different.
 a->addSubActivity(s);
 SubActivity s2(Date(14, 10, 23), Date(14, 10, 23), Time(static_cast<unsigned>(14), static_cast<unsigned>(00), static_cast<unsigned>(00)), Time(static_cast<unsigned>(15),static_cast<unsigned>(00), static_cast<unsigned>(00)), std::string("This is a note, again"));
 a->removeSubActivity(s2);

@@ -17,7 +17,7 @@ set(SOURCE_FILES
         ../src/Board.h
         ../src/Board.cpp
         ../src/SubActivity.h
-        ../src/SubActivity.cpp )
+        ../src/SubActivity.cpp)
 
 add_library(core ${SOURCE_FILES} )
 
