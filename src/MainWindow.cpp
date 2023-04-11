@@ -147,7 +147,7 @@ void MainWindow::createActivity(){
     for(auto it : board->getActivities()){
         std::string s = it->getName();
         s+="(";
-        s+=std::to_string(it->getSubActivities().size());
+        s+=std::to_string(it->getAllSubActivities().size());
         s+=")";
         listWidget->addItem( QString::fromStdString(s) );
     }

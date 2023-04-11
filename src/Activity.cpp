@@ -45,7 +45,7 @@ void Activity::notify() const{
         o->update();
     }
 }
-const std::map<Date, SubActivity>& Activity::getSubActivities() const {
+const std::map<Date, SubActivity>& Activity::getAllSubActivities() const {
     return subactivities;
 }
 const std::string& Activity::getDescription() const {

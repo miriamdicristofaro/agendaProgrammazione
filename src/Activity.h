@@ -21,11 +21,11 @@ public:
     void removeSubActivity(SubActivity toDelete);
     const std::string& getDescription() const;
     const std::string& getName() const;
-    const std::map<Date, SubActivity>& getSubActivities() const;
+    const std::map<Date, SubActivity>& getAllSubActivities() const;
     bool operator == (const Activity& right) const;
-    virtual void attach(Observer * o) override;
-    virtual void detach(Observer * o) override;
-    virtual void notify() const  override;
+    void attach(Observer * o) override;
+    void detach(Observer * o) override;
+    void notify() const  override;
 private:
     std::string name;
     std::string description;

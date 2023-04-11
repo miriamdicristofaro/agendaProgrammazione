@@ -21,9 +21,9 @@ public:
     void removeActivity(std::string name);
     std::vector< std::shared_ptr<Activity> > getActivities();
     void save();
-    virtual void attach(Observer * o) override;
-    virtual void detach(Observer * o) override;
-    virtual void notify() const override;
+    void attach(Observer * o) override;
+    void detach(Observer * o) override;
+    void notify() const override;
 
 private:
     std::list < Observer* > observers;
