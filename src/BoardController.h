@@ -12,7 +12,7 @@
 class BoardController {
 public:
     BoardController(std::shared_ptr<Board> b) : board(b) { };
-    ~BoardController()= default;
+    ~BoardController() = default;
 
     void addActivity(std::shared_ptr<Activity> a);
     void removeActivity(std::string a);

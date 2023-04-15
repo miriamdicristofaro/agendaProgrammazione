@@ -29,8 +29,6 @@ Date::Date(int aDay, int aMonth, int aYear) noexcept{
 
 }
 
-Date::~Date() {
-}
 
 
 int Date::getMaxDays(int year) {
@@ -98,4 +96,27 @@ bool Date::operator < (const Date& right) const{
 
 bool Date::operator == (const Date& right) const{
     return this->year == right.year && this->month == right.month && this->day == right.day;
+}
+
+int Date::getDay() const{
+    return this->day;
+};
+
+/**
+ * Method that allows to know the month
+ */
+int Date::getMonth() const{
+    return this->month;
+};
+
+/**
+ * Method that allows to know the year
+ */
+int Date::getYear() const{
+    return this->year;
+};
+void Date::setYear(int year) noexcept{
+    if(this->day > getMaxDays(year))
+        throw std::runtime_error("Error in day after year modify");
+    this->year = year;
 }

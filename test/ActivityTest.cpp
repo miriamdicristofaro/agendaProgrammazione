@@ -4,14 +4,14 @@
 #include <string>
 #include <memory>
 
-#include "lib/googletest/googletest/include/gtest/gtest.h"
+#include "gtest/gtest.h"
 
 #include "../src/Activity.h"
 #include "../src/SubActivity.h"
 #include "../src/Date.h"
 #include "../src/Time.h"
 
-class ActivitySuite : public ::testing::Test {
+class ActivityTest: public ::testing::Test {
 
 protected:
 
@@ -36,12 +36,12 @@ protected:
 };
 
 
-TEST_F(ActivitySuite, Constructor) {
+TEST_F(ActivityTest, Constructor) {
 ASSERT_STREQ("Test", a->getName().c_str());
 ASSERT_STREQ("ActivityTest", a->getDescription().c_str());
 }
 
-TEST_F(ActivitySuite, GetSubActivities) {
+TEST_F(ActivityTest, GetSubActivities) {
 ASSERT_EQ(1, a->getAllSubActivities().size());
 
 
@@ -53,7 +53,7 @@ ASSERT_EQ(2, a->getAllSubActivities().size());
 
 }
 
-TEST_F(ActivitySuite, RemoveSubActivity){
+TEST_F(ActivityTest, RemoveSubActivity){
 SubActivity s(Date(14, 10, 23), Date(14, 10, 23), Time(static_cast<unsigned>(14), static_cast<unsigned>(00), static_cast<unsigned>(00)), Time(static_cast<unsigned>(15),static_cast<unsigned>(00), static_cast<unsigned>(00)), std::string("This is a note, again"));
 a->removeSubActivity(s);
 ASSERT_EQ(1, a->getAllSubActivities().size());
@@ -70,7 +70,7 @@ ASSERT_STREQ("This is a note",s1.getNotes().c_str());
 }
 
 
-TEST_F(ActivitySuite, EqualityOperator) {
+TEST_F(ActivityTest, EqualityOperator) {
 ASSERT_TRUE(*a == *a);
 
 ASSERT_FALSE(*a == *anotherA);

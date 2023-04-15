@@ -11,7 +11,7 @@
 #include<QMessageBox>
 
 MainWindow::MainWindow(std::shared_ptr<Board> b, std::shared_ptr<BoardController> bc) : board(b), boardController(bc){
-    setWindowTitle("Agenda");
+    setWindowTitle("Calendar");
     std::shared_ptr<ActivityController> ac(new ActivityController(board->getActivities().at(0)));
     aw = new ActivityWidget(board->getActivities().at(0), ac, board);
     impAct = board->getActivities().at(0);
@@ -107,7 +107,7 @@ void MainWindow::handleChangeSelectedItem(QListWidgetItem * item){
 }
 
 void MainWindow::closeEvent (QCloseEvent *event){
-    QMessageBox::StandardButton resBtn = QMessageBox::question( this, tr("Agenda"),
+    QMessageBox::StandardButton resBtn = QMessageBox::question( this, tr("Calendar"),
                                                                 tr("Are you sure?\n"),
                                                                 QMessageBox::Cancel | QMessageBox::No | QMessageBox::Yes,
                                                                 QMessageBox::Yes);

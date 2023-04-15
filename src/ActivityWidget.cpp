@@ -78,7 +78,7 @@ void ActivityWidget::fillTree(){
             treeView->addTopLevelItem(treeItem);
         }else if (it.second.getEndDate() < tod ){
             treeItem->setText(0,  "Passed");
-            treeItem->setForeground(0, QBrush( QColor(Qt::red) ) ) ;
+
         }else if( (it.second.getStartDate() < tod || it.second.getStartDate() == tod) && (tod < it.second.getEndDate()  || tod == it.second.getEndDate()) ){
             treeItem->setText(0, "To do now" );
             treeItem->setForeground(0, QBrush( QColor(Qt::blue) ) ) ;

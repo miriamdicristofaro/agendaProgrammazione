@@ -12,13 +12,14 @@ class Time {
 public:
     explicit Time(short unsigned int h, short unsigned int m, short unsigned int s) noexcept;
     virtual ~Time() {};
-
     static Time fromString(std::string str);
     std::string toString() const;
 
     bool operator < (const Time& right) const;
     bool operator == (const Time& right) const;
-
+    int getHours() const;
+    int getMinutes() const;
+    int getSeconds() const;
 
 private:
     short unsigned int hours;

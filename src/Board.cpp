@@ -19,7 +19,7 @@ Board::~Board() {
 
 void Board::load(){
     std::ifstream infile;  //Input stream class to operate on files (read data from file)
-    infile.open("board.dat", std::ios::in | std::ios::binary);
+    infile.open("board2.dat", std::ios::in | std::ios::binary);
     if(!infile.is_open()){ //if the file is not present, it is created
         addActivity(std::shared_ptr<Activity> ( new Activity("Important Activity", "Important Activities") ) );
     }else{
@@ -59,7 +59,7 @@ void Board::load(){
 }
 
 void Board::save(){
-    outfile.open("board.dat", std::ios::binary | std::ios::out);     //to write on file
+    outfile.open("board2.dat", std::ios::binary | std::ios::out);     //to write on file
     if(outfile.is_open()){
         unsigned long int size = activitylist.size() ;
         outfile.write( reinterpret_cast<char*>( &( size) ), sizeof(int) ); //saves the number of activityList
@@ -75,9 +75,9 @@ void Board::save(){
             outfile.write( it->getDescription().c_str(),strSize);
 
 
-            int subSize = it->getSubActivities().size();
+            int subSize = it->getAllSubActivities().size();
             outfile.write( reinterpret_cast<char*>( &( subSize) ), sizeof(int) ); //saves the numb. of subactivities
-            for(auto subIt : it->getSubActivities()){
+            for(auto subIt : it->getAllSubActivities()){
                 subIt.second.save(outfile); //save all subactivities of the Activity
             }
         }

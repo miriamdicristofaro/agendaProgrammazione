@@ -1,7 +1,7 @@
 //
 // Created by miriam on 08/04/23.
 //
-#include "lib/googletest/googletest/include/gtest/gtest.h"
+#include "gtest/gtest.h"
 
 /*#include "../src/Date.h"
 #include "../src/Time.h"

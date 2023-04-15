@@ -15,7 +15,10 @@ public:
     std::string toString() const;
     bool operator < (const Date& right) const;
     bool operator == (const Date& right) const;
-
+    int getDay() const;
+    int getMonth() const;
+    int getYear() const;
+    void setYear(int year) noexcept;
 
 private:
     short unsigned int day;

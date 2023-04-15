@@ -49,7 +49,17 @@ bool Time::operator < (const Time& right) const{
     }
     return true;
 }
+int Time::getHours() const {
+    return hours;
+}
 
+int Time::getMinutes() const {
+    return minutes;
+}
+
+int Time::getSeconds() const {
+    return seconds;
+}
 
 bool Time::operator == (const Time& right) const{
     return this->hours == right.hours && this->minutes == right.minutes && this->seconds == right.seconds;

@@ -29,6 +29,7 @@ private:
     std::list < Observer* > observers;
     std::vector< std::shared_ptr<Activity> > activitylist;
     std::ofstream outfile;
+    std::shared_ptr<Activity> activities;
 
     void load();
 };
